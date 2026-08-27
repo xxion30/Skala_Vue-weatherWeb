@@ -1,0 +1,49 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import WeatherHomeView from '@/views/WeatherHomeView.vue'
+import EntryView from '@/views/EntryView.vue'
+
+const routes = [
+  {
+    path: '/',
+    name: 'Entry',
+    component: EntryView,
+  },
+  {
+    path: '/practice',
+    name: 'WeatherHome',
+    component: WeatherHomeView,
+  },
+  {
+    path: '/about',
+    name: 'WeatherAbout',
+    component: () => import('../views/WeatherAboutView.vue'),
+  },
+  {
+    path: '/weather/:cityId',
+    name: 'WeatherDetail',
+    component: () => import('../views/WeatherDetailView.vue'),
+  },
+  {
+  path: '/showcase',
+  name: 'Showcase',
+  component: () => import('@/views/ShowcaseView.vue'),
+  },
+  {
+    path: '/errors',
+    name: 'ErrorLog',
+    component: () => import('@/views/ErrorLogView.vue'),
+  },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFoundView.vue'),
+  },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+
+export default router
